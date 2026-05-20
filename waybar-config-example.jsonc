@@ -1,0 +1,45 @@
+// Add this to your ~/.config/waybar/config.jsonc
+// Place it in the appropriate bar section where you want it to appear
+
+// In your "modules" array, add:
+"custom/timer-tracker": {
+  "format": "{}",
+  "exec": "~/.config/waybar/timer-tracker.sh status",
+  "interval": 1,
+  "on-click": "~/.config/waybar/timer-tracker.sh click",
+  "on-right-click": "hyprctl dispatch exec '$EDITOR ~/.config/timer-task-tracker/app-data.json'",
+  "tooltip": true,
+  "return-type": "json"
+}
+
+// Add to your CSS file (~/.config/waybar/style.css):
+/*
+#custom-timer-tracker {
+  padding: 0 10px;
+  margin: 0 5px;
+  color: #a6e3a1;
+}
+
+#custom-timer-tracker.timer-active {
+  color: #f38ba8;
+  animation: blink 1s infinite;
+}
+
+#custom-timer-tracker.tasks-active {
+  color: #94e2d5;
+}
+
+#custom-timer-tracker.idle {
+  color: #6c7086;
+  opacity: 0.6;
+}
+
+@keyframes blink {
+  0%, 49% {
+    opacity: 1;
+  }
+  50%, 100% {
+    opacity: 0.5;
+  }
+}
+*/
