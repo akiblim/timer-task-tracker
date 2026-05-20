@@ -8,68 +8,50 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
     
     :root {
-      --color-background-primary: #1e1e2e;
-      --color-background-secondary: #313244;
-      --color-background-tertiary: #45475a;
-      --color-background-info: #89b4fa;
-      --color-background-success: #a6e3a1;
-      --color-background-warning: #f9e2af;
+      --color-bg-primary: #1e1e2e;
+      --color-bg-secondary: #313244;
       --color-text-primary: #cdd6f4;
       --color-text-secondary: #bac2de;
-      --color-text-tertiary: #a6adc8;
-      --color-text-info: #1e1e2e;
-      --color-text-success: #1e1e2e;
-      --color-border-tertiary: rgba(205, 214, 244, 0.15);
-      --color-border-secondary: rgba(205, 214, 244, 0.3);
-      --border-radius-md: 8px;
-      --border-radius-lg: 12px;
+      --color-success: #a6e3a1;
+      --color-danger: #f38ba8;
+      --color-warning: #f9e2af;
+      --color-info: #89b4fa;
+      --border-radius: 8px;
     }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
-      background: var(--color-background-primary);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--color-bg-primary);
       color: var(--color-text-primary);
       line-height: 1.6;
-      overflow-x: hidden;
-    }
-
-    input, select, textarea, button {
-      font-family: inherit;
-      font-size: inherit;
     }
 
     input[type="text"],
     input[type="number"],
     textarea {
-      background: var(--color-background-secondary);
+      background: var(--color-bg-secondary);
       color: var(--color-text-primary);
-      border: 0.5px solid var(--color-border-tertiary);
-      padding: 0.625rem;
-      border-radius: var(--border-radius-md);
-      transition: all 0.2s;
+      border: 1px solid rgba(205, 214, 244, 0.2);
+      padding: 8px 12px;
+      border-radius: var(--border-radius);
+      font-family: inherit;
+      font-size: 14px;
     }
 
-    input[type="text"]:hover,
-    input[type="number"]:hover,
-    textarea:hover {
-      border-color: var(--color-border-secondary);
-    }
-
-    input[type="text"]:focus,
-    input[type="number"]:focus,
-    textarea:focus {
+    input:focus {
       outline: none;
-      border-color: var(--color-background-info);
+      border-color: var(--color-info);
       background: rgba(137, 180, 250, 0.1);
     }
 
     button {
       cursor: pointer;
-      border-radius: var(--border-radius-md);
-      transition: all 0.2s;
-      padding: 0.625rem 1rem;
+      border: none;
+      padding: 8px 16px;
+      border-radius: var(--border-radius);
       font-weight: 500;
-      border: 0.5px solid transparent;
+      transition: all 0.2s;
+      font-size: 14px;
     }
 
     button:hover {
@@ -77,13 +59,137 @@
       transform: translateY(-1px);
     }
 
-    button:active {
-      transform: scale(0.98);
+    .container {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 20px;
     }
 
-    input[type="checkbox"] {
+    .tabs {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid rgba(205, 214, 244, 0.1);
+      padding-bottom: 15px;
+    }
+
+    .tab-btn {
+      background: transparent;
+      color: var(--color-text-secondary);
+      border: none;
+      padding: 8px 16px;
       cursor: pointer;
-      accent-color: var(--color-background-success);
+      border-bottom: 2px solid transparent;
+      transition: all 0.2s;
+    }
+
+    .tab-btn.active {
+      color: var(--color-text-primary);
+      border-bottom-color: var(--color-success);
+    }
+
+    .input-group {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 15px;
+      flex-wrap: wrap;
+    }
+
+    .input-field {
+      flex: 1;
+      min-width: 100px;
+    }
+
+    .input-field label {
+      display: block;
+      font-size: 12px;
+      color: var(--color-text-secondary);
+      margin-bottom: 4px;
+    }
+
+    .btn-primary {
+      background: var(--color-success);
+      color: #1e1e2e;
+    }
+
+    .btn-danger {
+      background: var(--color-danger);
+      color: white;
+    }
+
+    .btn-warning {
+      background: var(--color-warning);
+      color: #1e1e2e;
+    }
+
+    .btn-small {
+      padding: 4px 8px;
+      font-size: 12px;
+    }
+
+    .item {
+      background: var(--color-bg-secondary);
+      padding: 12px;
+      border-radius: var(--border-radius);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border: 1px solid rgba(205, 214, 244, 0.1);
+    }
+
+    .item-content {
+      flex: 1;
+    }
+
+    .item-title {
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+
+    .item-subtitle {
+      font-size: 12px;
+      color: var(--color-text-secondary);
+    }
+
+    .item-actions {
+      display: flex;
+      gap: 6px;
+    }
+
+    .timer-display {
+      font-size: 24px;
+      font-weight: bold;
+      font-variant-numeric: tabular-nums;
+      color: var(--color-info);
+      min-width: 100px;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 40px 20px;
+      color: var(--color-text-secondary);
+    }
+
+    .empty-icon {
+      font-size: 48px;
+      margin-bottom: 16px;
+      opacity: 0.5;
+    }
+
+    .progress {
+      width: 100%;
+      height: 4px;
+      background: rgba(205, 214, 244, 0.1);
+      border-radius: 2px;
+      overflow: hidden;
+      margin-top: 8px;
+    }
+
+    .progress-bar {
+      height: 100%;
+      background: var(--color-success);
+      transition: width 0.3s;
     }
 
     @keyframes blink {
@@ -93,320 +199,341 @@
 
     .timer-complete {
       animation: blink 1s infinite;
+      color: var(--color-danger);
     }
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons@latest/tabler-icons.min.css">
 </head>
 <body>
-  <div id="root"></div>
+  <div class="container">
+    <h1 style="margin-bottom: 20px;">⏱️ Timer & Task Tracker</h1>
+
+    <div class="tabs">
+      <button class="tab-btn active" onclick="switchTab('tasks')">
+        <i class="ti ti-checkbox"></i> Tasks
+      </button>
+      <button class="tab-btn" onclick="switchTab('timers')">
+        <i class="ti ti-clock"></i> Timers
+      </button>
+    </div>
+
+    <!-- TASKS TAB -->
+    <div id="tasks-tab">
+      <div class="input-group">
+        <input 
+          type="text" 
+          id="newTaskInput" 
+          placeholder="Add a new task..." 
+          style="flex: 1;"
+          onkeypress="if(event.key==='Enter') addTask()"
+        />
+        <button class="btn-primary" onclick="addTask()">
+          <i class="ti ti-plus"></i> Add
+        </button>
+      </div>
+
+      <div id="tasksList"></div>
+    </div>
+
+    <!-- TIMERS TAB -->
+    <div id="timers-tab" style="display: none;">
+      <div class="input-group">
+        <div class="input-field">
+          <label>Name</label>
+          <input type="text" id="timerName" placeholder="e.g., Work Session">
+        </div>
+        <div class="input-field">
+          <label>Hours</label>
+          <input type="number" id="timerHours" min="0" value="0" style="max-width: 80px;">
+        </div>
+        <div class="input-field">
+          <label>Minutes</label>
+          <input type="number" id="timerMinutes" min="0" max="59" value="5" style="max-width: 80px;">
+        </div>
+        <div class="input-field">
+          <label>Seconds</label>
+          <input type="number" id="timerSeconds" min="0" max="59" value="0" style="max-width: 80px;">
+        </div>
+        <button class="btn-primary" onclick="addTimer()" style="align-self: flex-end;">
+          <i class="ti ti-plus"></i> Create
+        </button>
+      </div>
+
+      <div id="timersList"></div>
+    </div>
+  </div>
 
   <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
   <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.5/babel.min.js"></script>
+  <script>
+    // App State
+    let tasks = [];
+    let timers = [];
 
-  <script type="text/babel">
-    const { useState, useEffect, useRef } = React;
-
-    function TimerTaskApp() {
-      const [tasks, setTasks] = useState([]);
-      const [timers, setTimers] = useState([]);
-      const [newTask, setNewTask] = useState('');
-      const [timerInput, setTimerInput] = useState('');
-      const [activeTab, setActiveTab] = useState('tasks');
-
-      // Load saved data
-      useEffect(() => {
-        const savedTasks = localStorage.getItem('tasks');
-        const savedTimers = localStorage.getItem('timers');
-        if (savedTasks) setTasks(JSON.parse(savedTasks));
-        if (savedTimers) setTimers(JSON.parse(savedTimers));
-      }, []);
-
-      // Save tasks
-      useEffect(() => {
-        localStorage.setItem('tasks', JSON.stringify(tasks));
-      }, [tasks]);
-
-      // Save timers
-      useEffect(() => {
-        localStorage.setItem('timers', JSON.stringify(timers));
-      }, [timers]);
-
-      // Timer tick
-      useEffect(() => {
-        const interval = setInterval(() => {
-          setTimers(prevTimers =>
-            prevTimers.map(timer => {
-              if (timer.running && timer.remaining > 0) {
-                const updated = { ...timer, remaining: timer.remaining - 1 };
-                if (updated.remaining === 0) {
-                  playSound();
-                }
-                return updated;
-              }
-              return timer;
-            })
-          );
-        }, 1000);
-        return () => clearInterval(interval);
-      }, []);
-
-      const playSound = () => {
-        try {
-          const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-          const oscillator = audioContext.createOscillator();
-          const gainNode = audioContext.createGain();
-          oscillator.connect(gainNode);
-          gainNode.connect(audioContext.destination);
-          oscillator.frequency.value = 800;
-          oscillator.type = 'sine';
-          gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
-          gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.5);
-          oscillator.start(audioContext.currentTime);
-          oscillator.stop(audioContext.currentTime + 0.5);
-        } catch (e) {
-          console.log('Audio not available');
-        }
-      };
-
-      const addTask = () => {
-        if (newTask.trim()) {
-          setTasks([...tasks, { id: Date.now(), text: newTask, completed: false }]);
-          setNewTask('');
-        }
-      };
-
-      const toggleTask = (id) => {
-        setTasks(tasks.map(task => task.id === id ? { ...task, completed: !task.completed } : task));
-      };
-
-      const deleteTask = (id) => {
-        setTasks(tasks.filter(task => task.id !== id));
-      };
-
-      const addTimer = () => {
-        const seconds = parseInt(timerInput);
-        if (seconds > 0) {
-          setTimers([...timers, { id: Date.now(), remaining: seconds, running: true, label: timerInput }]);
-          setTimerInput('');
-        }
-      };
-
-      const toggleTimer = (id) => {
-        setTimers(timers.map(timer => timer.id === id ? { ...timer, running: !timer.running } : timer));
-      };
-
-      const deleteTimer = (id) => {
-        setTimers(timers.filter(timer => timer.id !== id));
-      };
-
-      const formatTime = (seconds) => {
-        const h = Math.floor(seconds / 3600);
-        const m = Math.floor((seconds % 3600) / 60);
-        const s = seconds % 60;
-        if (h > 0) return `${h}:${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
-        return `${m}:${s.toString().padStart(2, '0')}`;
-      };
-
-      const completedCount = tasks.filter(t => t.completed).length;
-
-      return (
-        <div style={{ background: 'var(--color-background-primary)', minHeight: '100vh', padding: '1.5rem 0' }}>
-          <div style={{ maxWidth: '600px', margin: '0 auto', padding: '0 1.5rem' }}>
-            <div style={{ display: 'flex', gap: '1rem', marginBottom: '2rem', borderBottom: '0.5px solid var(--color-border-tertiary)', paddingBottom: '1rem' }}>
-              <button
-                onClick={() => setActiveTab('tasks')}
-                style={{
-                  background: activeTab === 'tasks' ? 'var(--color-background-secondary)' : 'transparent',
-                  border: '0.5px solid ' + (activeTab === 'tasks' ? 'var(--color-border-secondary)' : 'var(--color-border-tertiary)'),
-                  color: 'var(--color-text-primary)',
-                }}
-              >
-                <i className="ti ti-checkbox" style={{ marginRight: '6px', fontSize: '16px' }} aria-hidden="true"></i>
-                Tasks
-              </button>
-              <button
-                onClick={() => setActiveTab('timers')}
-                style={{
-                  background: activeTab === 'timers' ? 'var(--color-background-secondary)' : 'transparent',
-                  border: '0.5px solid ' + (activeTab === 'timers' ? 'var(--color-border-secondary)' : 'var(--color-border-tertiary)'),
-                  color: 'var(--color-text-primary)',
-                }}
-              >
-                <i className="ti ti-clock" style={{ marginRight: '6px', fontSize: '16px' }} aria-hidden="true"></i>
-                Timers
-              </button>
-            </div>
-
-            {activeTab === 'tasks' && (
-              <div>
-                <div style={{ marginBottom: '1.5rem' }}>
-                  <div style={{ display: 'flex', gap: '8px', marginBottom: '1rem' }}>
-                    <input
-                      type="text"
-                      value={newTask}
-                      onChange={(e) => setNewTask(e.target.value)}
-                      onKeyPress={(e) => e.key === 'Enter' && addTask()}
-                      placeholder="Add a new task..."
-                      style={{ flex: 1 }}
-                    />
-                    <button
-                      onClick={addTask}
-                      style={{
-                        background: 'var(--color-background-success)',
-                        color: 'var(--color-text-success)',
-                      }}
-                    >
-                      <i className="ti ti-plus" aria-hidden="true"></i>
-                    </button>
-                  </div>
-                  {tasks.length > 0 && (
-                    <div style={{ fontSize: '13px', color: 'var(--color-text-secondary)' }}>
-                      {completedCount} of {tasks.length} completed
-                    </div>
-                  )}
-                </div>
-
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                  {tasks.length === 0 ? (
-                    <div style={{ textAlign: 'center', padding: '2rem 1rem', color: 'var(--color-text-secondary)', fontSize: '14px' }}>
-                      <i className="ti ti-inbox" style={{ fontSize: '32px', display: 'block', marginBottom: '8px', opacity: 0.5 }} aria-hidden="true"></i>
-                      No tasks yet. Add one to get started!
-                    </div>
-                  ) : (
-                    tasks.map(task => (
-                      <div
-                        key={task.id}
-                        style={{
-                          display: 'flex',
-                          alignItems: 'center',
-                          gap: '12px',
-                          padding: '1rem',
-                          background: 'var(--color-background-secondary)',
-                          borderRadius: 'var(--border-radius-md)',
-                          border: '0.5px solid var(--color-border-tertiary)',
-                        }}
-                      >
-                        <input
-                          type="checkbox"
-                          checked={task.completed}
-                          onChange={() => toggleTask(task.id)}
-                          style={{ width: '18px', height: '18px' }}
-                        />
-                        <span
-                          style={{
-                            flex: 1,
-                            textDecoration: task.completed ? 'line-through' : 'none',
-                            color: task.completed ? 'var(--color-text-secondary)' : 'var(--color-text-primary)',
-                            fontSize: '14px'
-                          }}
-                        >
-                          {task.text}
-                        </span>
-                        <button
-                          onClick={() => deleteTask(task.id)}
-                          style={{
-                            background: 'transparent',
-                            border: 'none',
-                            color: 'var(--color-text-secondary)',
-                            padding: '4px',
-                          }}
-                        >
-                          <i className="ti ti-trash" style={{ fontSize: '16px' }} aria-hidden="true"></i>
-                        </button>
-                      </div>
-                    ))
-                  )}
-                </div>
-              </div>
-            )}
-
-            {activeTab === 'timers' && (
-              <div>
-                <div style={{ marginBottom: '1.5rem' }}>
-                  <div style={{ display: 'flex', gap: '8px' }}>
-                    <input
-                      type="number"
-                      value={timerInput}
-                      onChange={(e) => setTimerInput(e.target.value)}
-                      onKeyPress={(e) => e.key === 'Enter' && addTimer()}
-                      placeholder="Seconds..."
-                      min="1"
-                      style={{ flex: 1 }}
-                    />
-                    <button
-                      onClick={addTimer}
-                      style={{
-                        background: 'var(--color-background-success)',
-                        color: 'var(--color-text-success)',
-                      }}
-                    >
-                      <i className="ti ti-plus" aria-hidden="true"></i>
-                    </button>
-                  </div>
-                </div>
-
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                  {timers.length === 0 ? (
-                    <div style={{ textAlign: 'center', padding: '2rem 1rem', color: 'var(--color-text-secondary)', fontSize: '14px' }}>
-                      <i className="ti ti-hourglass-empty" style={{ fontSize: '32px', display: 'block', marginBottom: '8px', opacity: 0.5 }} aria-hidden="true"></i>
-                      No timers running. Create one to start!
-                    </div>
-                  ) : (
-                    timers.map(timer => (
-                      <div
-                        key={timer.id}
-                        className={timer.remaining === 0 ? 'timer-complete' : ''}
-                        style={{
-                          display: 'flex',
-                          alignItems: 'center',
-                          gap: '12px',
-                          padding: '1rem',
-                          background: timer.remaining === 0 ? 'var(--color-background-warning)' : 'var(--color-background-secondary)',
-                          borderRadius: 'var(--border-radius-md)',
-                          border: '0.5px solid var(--color-border-tertiary)',
-                        }}
-                      >
-                        <button
-                          onClick={() => toggleTimer(timer.id)}
-                          style={{
-                            background: 'transparent',
-                            border: 'none',
-                            color: 'var(--color-text-primary)',
-                            padding: '4px',
-                            fontSize: '18px'
-                          }}
-                        >
-                          <i className={`ti ${timer.running ? 'ti-player-pause' : 'ti-player-play'}`} aria-hidden="true"></i>
-                        </button>
-                        <div style={{ flex: 1 }}>
-                          <div style={{ fontSize: '18px', fontWeight: '500', color: 'var(--color-text-primary)', fontVariantNumeric: 'tabular-nums' }}>
-                            {formatTime(timer.remaining)}
-                          </div>
-                        </div>
-                        <button
-                          onClick={() => deleteTimer(timer.id)}
-                          style={{
-                            background: 'transparent',
-                            border: 'none',
-                            color: 'var(--color-text-secondary)',
-                            padding: '4px',
-                          }}
-                        >
-                          <i className="ti ti-x" style={{ fontSize: '16px' }} aria-hidden="true"></i>
-                        </button>
-                      </div>
-                    ))
-                  )}
-                </div>
-              </div>
-            )}
-          </div>
-        </div>
-      );
+    // Load from localStorage on startup
+    function loadData() {
+      const savedTasks = localStorage.getItem('tasks');
+      const savedTimers = localStorage.getItem('timers');
+      
+      if (savedTasks) tasks = JSON.parse(savedTasks);
+      if (savedTimers) {
+        timers = JSON.parse(savedTimers);
+        // Resume running timers
+        timers.forEach(timer => {
+          if (timer.running && timer.remaining > 0) {
+            timer.running = true;
+          }
+        });
+      }
+      
+      render();
     }
 
-    ReactDOM.render(<TimerTaskApp />, document.getElementById('root'));
+    // Save to localStorage
+    function saveData() {
+      localStorage.setItem('tasks', JSON.stringify(tasks));
+      localStorage.setItem('timers', JSON.stringify(timers));
+    }
+
+    // TASKS
+    function addTask() {
+      const input = document.getElementById('newTaskInput');
+      const text = input.value.trim();
+      
+      if (!text) return;
+      
+      tasks.push({
+        id: Date.now(),
+        text: text,
+        completed: false,
+        createdAt: new Date().toISOString()
+      });
+      
+      input.value = '';
+      saveData();
+      render();
+    }
+
+    function toggleTask(id) {
+      const task = tasks.find(t => t.id === id);
+      if (task) task.completed = !task.completed;
+      saveData();
+      render();
+    }
+
+    function deleteTask(id) {
+      tasks = tasks.filter(t => t.id !== id);
+      saveData();
+      render();
+    }
+
+    // TIMERS
+    function addTimer() {
+      const name = document.getElementById('timerName').value || 'Timer';
+      const hours = parseInt(document.getElementById('timerHours').value) || 0;
+      const minutes = parseInt(document.getElementById('timerMinutes').value) || 0;
+      const seconds = parseInt(document.getElementById('timerSeconds').value) || 0;
+      
+      const totalSeconds = hours * 3600 + minutes * 60 + seconds;
+      
+      if (totalSeconds <= 0) {
+        alert('Please enter a valid time');
+        return;
+      }
+      
+      timers.push({
+        id: Date.now(),
+        name: name,
+        totalSeconds: totalSeconds,
+        remaining: totalSeconds,
+        running: true,
+        createdAt: new Date().toISOString()
+      });
+      
+      document.getElementById('timerName').value = '';
+      document.getElementById('timerHours').value = '0';
+      document.getElementById('timerMinutes').value = '5';
+      document.getElementById('timerSeconds').value = '0';
+      
+      saveData();
+      render();
+    }
+
+    function toggleTimer(id) {
+      const timer = timers.find(t => t.id === id);
+      if (timer) timer.running = !timer.running;
+      saveData();
+      render();
+    }
+
+    function deleteTimer(id) {
+      timers = timers.filter(t => t.id !== id);
+      saveData();
+      render();
+    }
+
+    function renameTimer(id) {
+      const timer = timers.find(t => t.id === id);
+      if (!timer) return;
+      
+      const newName = prompt('Enter new name:', timer.name);
+      if (newName && newName.trim()) {
+        timer.name = newName.trim();
+        saveData();
+        render();
+      }
+    }
+
+    function formatTime(seconds) {
+      const h = Math.floor(seconds / 3600);
+      const m = Math.floor((seconds % 3600) / 60);
+      const s = seconds % 60;
+      
+      if (h > 0) {
+        return `${h}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+      }
+      return `${m}:${String(s).padStart(2, '0')}`;
+    }
+
+    function playSound() {
+      try {
+        const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        const oscillator = audioContext.createOscillator();
+        const gainNode = audioContext.createGain();
+        oscillator.connect(gainNode);
+        gainNode.connect(audioContext.destination);
+        oscillator.frequency.value = 800;
+        oscillator.type = 'sine';
+        gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+        gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.5);
+        oscillator.start(audioContext.currentTime);
+        oscillator.stop(audioContext.currentTime + 0.5);
+      } catch (e) {
+        console.log('Audio not available');
+      }
+    }
+
+    // Timer tick
+    setInterval(() => {
+      let changed = false;
+      
+      timers.forEach(timer => {
+        if (timer.running && timer.remaining > 0) {
+          timer.remaining--;
+          changed = true;
+          
+          if (timer.remaining === 0) {
+            playSound();
+          }
+        }
+      });
+      
+      if (changed) {
+        saveData();
+        render();
+      }
+    }, 1000);
+
+    // RENDER
+    function switchTab(tab) {
+      document.getElementById('tasks-tab').style.display = tab === 'tasks' ? 'block' : 'none';
+      document.getElementById('timers-tab').style.display = tab === 'timers' ? 'block' : 'none';
+      
+      document.querySelectorAll('.tab-btn').forEach((btn, i) => {
+        btn.classList.toggle('active', 
+          (i === 0 && tab === 'tasks') || (i === 1 && tab === 'timers')
+        );
+      });
+    }
+
+    function render() {
+      renderTasks();
+      renderTimers();
+    }
+
+    function renderTasks() {
+      const container = document.getElementById('tasksList');
+      const completed = tasks.filter(t => t.completed).length;
+      
+      if (tasks.length === 0) {
+        container.innerHTML = `
+          <div class="empty-state">
+            <div class="empty-icon">📝</div>
+            <p>No tasks yet. Add one to get started!</p>
+          </div>
+        `;
+        return;
+      }
+      
+      container.innerHTML = `
+        <div style="margin-bottom: 10px; font-size: 12px; color: var(--color-text-secondary);">
+          ${completed} of ${tasks.length} completed
+        </div>
+        ${tasks.map(task => `
+          <div class="item">
+            <input 
+              type="checkbox" 
+              ${task.completed ? 'checked' : ''} 
+              onchange="toggleTask(${task.id})"
+              style="cursor: pointer; width: 18px; height: 18px;"
+            />
+            <div class="item-content">
+              <div class="item-title" style="${task.completed ? 'text-decoration: line-through; opacity: 0.6;' : ''}">
+                ${task.text}
+              </div>
+            </div>
+            <button class="btn-danger btn-small" onclick="deleteTask(${task.id})">
+              <i class="ti ti-trash"></i>
+            </button>
+          </div>
+        `).join('')}
+      `;
+    }
+
+    function renderTimers() {
+      const container = document.getElementById('timersList');
+      
+      if (timers.length === 0) {
+        container.innerHTML = `
+          <div class="empty-state">
+            <div class="empty-icon">⏱️</div>
+            <p>No timers running. Create one to start!</p>
+          </div>
+        `;
+        return;
+      }
+      
+      container.innerHTML = timers.map(timer => {
+        const progress = ((timer.totalSeconds - timer.remaining) / timer.totalSeconds) * 100;
+        const isComplete = timer.remaining === 0;
+        
+        return `
+          <div class="item ${isComplete ? 'timer-complete' : ''}">
+            <div class="item-content">
+              <div class="item-title">${timer.name}</div>
+              <div class="timer-display">${formatTime(timer.remaining)}</div>
+              <div class="progress">
+                <div class="progress-bar" style="width: ${progress}%"></div>
+              </div>
+            </div>
+            <div class="item-actions" style="flex-direction: column; gap: 4px;">
+              <button class="btn-warning btn-small" onclick="toggleTimer(${timer.id})">
+                <i class="ti ${timer.running ? 'ti-player-pause' : 'ti-player-play'}"></i>
+              </button>
+              <button class="btn-warning btn-small" onclick="renameTimer(${timer.id})">
+                <i class="ti ti-edit"></i>
+              </button>
+              <button class="btn-danger btn-small" onclick="deleteTimer(${timer.id})">
+                <i class="ti ti-trash"></i>
+              </button>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // Initialize
+    loadData();
   </script>
 </body>
 </html>
