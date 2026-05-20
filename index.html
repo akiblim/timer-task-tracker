@@ -508,17 +508,6 @@
         const isComplete = timer.remaining === 0;
         
         return `
-          <div class="item ${isComplete ? 'timer-complete' : ''}">
-            <div class="item-content">
-              <div class="item-title">${timer.name}</div>
-              <div class="timer-display">${formatTime(timer.remaining)}</div>
-              <div class="progress">
-                <div class="progress-bar" style="width: ${progress}%"></div>
-              </div>
-            </div>
-            <div class="item-actions" style="flex-direction: column; gap: 4px;">
-              <button class="btn-warning btn-small" onclick="toggleTimer(${timer.id})">
-                <i class="ti ${timer.running ? 'ti-player-pause' : 'ti-player-play'}"></i>
               </button>
               <button class="btn-warning btn-small" onclick="renameTimer(${timer.id})">
                 <i class="ti ti-edit"></i>
